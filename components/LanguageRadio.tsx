@@ -11,12 +11,11 @@ interface Props {
 }
 
 const LanguageButton = ({ text, checked, handlePress }: Props) => {
-    console.log(text);
     return (
         <TouchableOpacity
             onPress={() => handlePress(text)}
             activeOpacity={0.7}
-            className="px-8 mt-4">
+            className=" mt-4">
             <LinearGradient
                 className="w-full py-4 rounded-xl flex-row items-center justify-between px-4"
                 colors={['rgba(50, 100, 166, 0.2)', 'rgba(242, 242, 242, 0.2)']}
@@ -47,7 +46,7 @@ const LanguageRadio = () => {
     }
 
     return (
-        <View className="w-full h-full flex-col gap-y-4">
+        <View className="w-full flex-1 flex-col gap-y-4">
             <LanguageButton handlePress={handlePress} text="ENGLISH" checked={checked} />
             <LanguageButton handlePress={handlePress} text="NEPALI" checked={checked} />
         </View>

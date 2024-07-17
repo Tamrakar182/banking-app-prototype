@@ -18,6 +18,7 @@ module.exports = {
         bextrabold: ["OpenSans-ExtraBold", "sans-serif"],
       },
       fontSize: {
+        'normal': '12px',
         'regular': '20px',
         'medium': '14px',
         '3xl': '32px'

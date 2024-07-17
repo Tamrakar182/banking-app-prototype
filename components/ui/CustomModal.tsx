@@ -7,7 +7,6 @@ export type Ref = BottomSheetModal;
 interface Props {
     children: ReactNode;
     snapPoint?: string;
-
 }
 
 const CustomBottomSheetModal = forwardRef<Ref, Props>((props, ref) => {
