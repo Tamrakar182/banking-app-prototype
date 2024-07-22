@@ -21,7 +21,8 @@ module.exports = {
         'normal': '12px',
         'regular': '20px',
         'medium': '14px',
-        '3xl': '32px'
+        '3xl': '32px',
+        "large": "48px",
       }
     },
   },
