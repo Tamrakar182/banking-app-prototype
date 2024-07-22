@@ -36,10 +36,12 @@ const RootLayout = () => {
             headerShown: false,
           }}
         >
-          <Stack.Screen name="index" options={{ animation: 'fade'}}/>
-          <Stack.Screen name="(auth)/video" options={{ animation: 'slide_from_right'}}/>
-          <Stack.Screen name="(auth)/info" options={{ animation: 'slide_from_bottom'}} />
-          <Stack.Screen name="(auth)/phone" options={{ animation: 'slide_from_right'}} />
+          <Stack.Screen name="index" options={{ animation: 'fade' }} />
+          <Stack.Screen name="(auth)/video" options={{ animation: 'slide_from_right' }} />
+          <Stack.Screen name="(auth)/info" options={{ animation: 'slide_from_bottom' }} />
+          <Stack.Screen name="(auth)/phone" options={{ animation: 'slide_from_right' }} />
+          <Stack.Screen name="(auth)/register" options={{ animation: 'slide_from_right' }} />
+          <Stack.Screen name="(auth)/login" options={{ animation: 'slide_from_right' }} />
         </Stack>
       </BottomSheetModalProvider>
     </GestureHandlerRootView>

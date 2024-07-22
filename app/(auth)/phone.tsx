@@ -26,7 +26,7 @@ const Phone = () => {
             Alert.alert("Error", "Please enter a valid phone number")
             return;
         }
-
+        router.push("/register");
     }
 
     return (
@@ -41,6 +41,7 @@ const Phone = () => {
                 <View className='flex-1'>
                     <Text className='text-white font-bregular text-medium pb-2'>Enter your phone Number</Text>
                     <CustomInput
+                        keyBoardType='decimal-pad'
                         input={phoneNumber}
                         handleInputChange={handleInputChange}
                         placeholder='eg. 98000000'

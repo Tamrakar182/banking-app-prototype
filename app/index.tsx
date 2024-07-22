@@ -17,7 +17,7 @@ export default function Index() {
 
         <View className="w-full flex-row justify-between items-center py-8">
           <Text className="text-medium font-bregular text-white">@MBL M-SMART</Text>
-          <CustomButton showArrow title="Confirm" handlePress={() => router.push("/(auth)/video")} />
+          <CustomButton showArrow title="Confirm" handlePress={() => router.push("/(tabs)/home")} />
         </View>
       </Container>
     </SafeAreaView>

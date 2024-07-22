@@ -1,8 +1,8 @@
 import { View, Text, Image, TouchableOpacity } from 'react-native'
 import { LinearGradient } from "expo-linear-gradient";
 import images from "@/constants/images";
-import Icon from 'react-native-vector-icons/FontAwesome';
 import { useState } from 'react';
+import CheckBox from './ui/CheckBox';
 
 interface Props {
     text: string;
@@ -25,14 +25,7 @@ const LanguageButton = ({ text, checked, handlePress }: Props) => {
                     <Image source={text === "ENGLISH" ? images.EnglishFlag : images.NepaliFlag} className="w-10 h-10" />
                     <Text className="font-bbold text-regular text-white">{text}</Text>
                 </View>
-                <LinearGradient
-                    colors={['#0C4CA3', '#011B3E']}
-                    start={[0, 0.25]}
-                    end={[1, 0.75]}
-                    className="w-[30px] h-[30px] rounded-full items-center justify-center"
-                >
-                    {checked === text && <Icon name="check" size={20}  color="#48b02c" />}
-                </LinearGradient>
+                <CheckBox checked={checked === text} />
             </LinearGradient>
         </TouchableOpacity>
     )

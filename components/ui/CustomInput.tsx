@@ -1,14 +1,14 @@
-import { View, TextInput, TouchableOpacity, Image, Alert } from 'react-native'
-import { useState } from 'react'
+import { View, TextInput, KeyboardTypeOptions } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient';
 
 interface Props {
     input: string;
     handleInputChange: (str: string) => void
     placeholder: string
+    keyBoardType: KeyboardTypeOptions
 }
 
-const CustomInput = ({ input, handleInputChange, placeholder }: Props) => {
+const CustomInput = ({ input, handleInputChange, placeholder, keyBoardType }: Props) => {
     return (
         <View className="w-full h-16">
             <LinearGradient
@@ -21,7 +21,7 @@ const CustomInput = ({ input, handleInputChange, placeholder }: Props) => {
                     value={input}
                     placeholder={placeholder}
                     placeholderTextColor="#cdcde0"
-                    keyboardType='decimal-pad'
+                    keyboardType={keyBoardType}
                     onChangeText={(e) => handleInputChange(e)}
                 />
             </LinearGradient>
