@@ -5,7 +5,7 @@ import { router } from 'expo-router'
 import images from '@/constants/images'
 import Container from '@/components/ui/Container'
 import clsx from 'clsx'
-import Icon from 'react-native-vector-icons/AntDesign'
+import Icon from '@expo/vector-icons/AntDesign'
 
 const Register = () => {
     const handlePress = () => {

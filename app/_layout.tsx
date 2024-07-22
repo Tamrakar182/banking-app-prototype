@@ -42,6 +42,7 @@ const RootLayout = () => {
           <Stack.Screen name="(auth)/phone" options={{ animation: 'slide_from_right' }} />
           <Stack.Screen name="(auth)/register" options={{ animation: 'slide_from_right' }} />
           <Stack.Screen name="(auth)/login" options={{ animation: 'slide_from_right' }} />
+          <Stack.Screen name="(tabs)" options={{ headerShown: false, animation: 'fade' }} />
         </Stack>
       </BottomSheetModalProvider>
     </GestureHandlerRootView>

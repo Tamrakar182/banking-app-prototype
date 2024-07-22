@@ -7,10 +7,10 @@ import Container from '@/components/ui/Container'
 import IconedInput from '@/components/ui/IconedInput'
 import { useState } from 'react'
 import CheckBox from '@/components/ui/CheckBox'
-import AntDesign from 'react-native-vector-icons/AntDesign'
+import AntDesign from '@expo/vector-icons/AntDesign'
 import { LinearGradient } from 'expo-linear-gradient'
-import MaterialIcon from "react-native-vector-icons/MaterialIcons"
-import FontAwesome6 from "react-native-vector-icons/FontAwesome6"
+import MaterialIcon from "@expo/vector-icons/MaterialIcons"
+import FontAwesome6 from "@expo/vector-icons/FontAwesome6"
 import clsx from 'clsx'
 
 const ServicesIconRow = ({ className }: { className?: string }) => {

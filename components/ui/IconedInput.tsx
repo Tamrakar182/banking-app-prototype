@@ -1,8 +1,8 @@
 import { View, TextInput, TouchableOpacity, KeyboardTypeOptions } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon from '@expo/vector-icons/FontAwesome';
 import { useState } from 'react';
-import Entypo from "react-native-vector-icons/Entypo";
+import Entypo from "@expo/vector-icons/Entypo";
 import clsx from 'clsx';
 
 interface Props {
@@ -25,7 +25,7 @@ const IconedInput = ({ icon, containerStyles, input, handleInputChange, keyboard
                 end={[0.85, 1]}>
                 <View className='mr-2'>
                     <Icon
-                        name={icon}
+                        name={icon as any}
                         size={24}
                         color="#fff"
                     />

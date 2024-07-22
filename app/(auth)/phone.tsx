@@ -6,7 +6,7 @@ import images from '@/constants/images'
 import Container from '@/components/ui/Container'
 import CustomInput from '@/components/ui/CustomInput'
 import { useState } from 'react'
-import Icon from "react-native-vector-icons/Entypo"
+import Icon from "@expo/vector-icons/Entypo"
 import { LinearGradient } from 'expo-linear-gradient'
 import clsx from 'clsx'
 

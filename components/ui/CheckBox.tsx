@@ -1,5 +1,5 @@
 import React from 'react'
-import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon from '@expo/vector-icons/FontAwesome';
 import { LinearGradient } from 'expo-linear-gradient'
 
 interface Props {

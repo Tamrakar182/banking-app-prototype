@@ -3,7 +3,7 @@ import React from 'react'
 import { TouchableOpacity } from 'react-native'
 import clsx from 'clsx'
 import { LinearGradient } from 'expo-linear-gradient'
-import Icon from "react-native-vector-icons/AntDesign"
+import Icon from "@expo/vector-icons/AntDesign"
 
 interface CustomButtonsProps {
     title: string;

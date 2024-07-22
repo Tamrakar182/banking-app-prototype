@@ -2,7 +2,7 @@ import { View, Text, TouchableOpacity, Image } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import CustomButton from '@/components/ui/CustomButton'
 import { router } from 'expo-router'
-import Icon from "react-native-vector-icons/AntDesign"
+import Icon from "@expo/vector-icons/AntDesign"
 import images from '@/constants/images'
 import Container from '@/components/ui/Container'
 import ServicesInfo from '@/components/ServicesInfo'

@@ -2,8 +2,11 @@ import { View, Text, Button, StyleSheet, TouchableOpacity } from 'react-native'
 import { useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { CameraView, CameraType, useCameraPermissions, FlashMode } from 'expo-camera';
-import Ionicons from "react-native-vector-icons/Ionicons";
+import Ionicons from "@expo/vector-icons/Ionicons";
 import { LinearGradient } from 'expo-linear-gradient';
+import Feather from "@expo/vector-icons/Feather"
+import Container from '@/components/ui/Container';
+import { router } from 'expo-router';
 
 const QRScanner = () => {
     const [facing, setFacing] = useState<CameraType>('back');
@@ -11,12 +14,10 @@ const QRScanner = () => {
     const [permission, requestPermission] = useCameraPermissions();
 
     if (!permission) {
-        // Camera permissions are still loading.
         return <View />;
     }
 
     if (!permission.granted) {
-        // Camera permissions are not granted yet.
         return (
             <View className='flex-1 justify-center'>
                 <Text className='text-center pb-4'>We need your permission to show the camera</Text>
@@ -39,9 +40,9 @@ const QRScanner = () => {
 
     return (
         <SafeAreaView className="h-full bg-backgroundBlue">
-            <View className='flex-1 items-center justify-center'>
+            <Container className='flex-1 items-center justify-center'>
                 <CameraView
-                    className='w-[75%] h-[75%] rounded'
+                    className='w-full h-[75%] rounded mt-2'
                     facing={facing}
                     flash={flash}
                     enableTorch={flash === "on" ? true : false}
@@ -59,21 +60,21 @@ const QRScanner = () => {
                         </TouchableOpacity>
                     </View>
                 </CameraView>
-                <View className="flex-col gap-y-4">
-                    <Text className='font-bregular text-[#f2f2f2]'>Tap the button below to share your information 👇</Text>
-
-                    <TouchableOpacity onPress={toggleFlash}>
+                <View className="flex-col gap-y-2 pt-4">
+                    <Text className='font-bregular text-medium text-[#f2f2f2]'>Tap the button below to share your information 👇</Text>
+                    <TouchableOpacity onPress={() => router.push("/(tabs)/myqr")}>
                         <LinearGradient
                             colors={['#0C4CA3', '#011B3E']}
                             start={[0, 0.25]}
                             end={[1, 0.75]}
-                            className="w-full h-full rounded-3xl items-center justify-center"
+                            className="w-full rounded-3xl items-center flex-row justify-center p-2"
                         >
                             <Text className='font-bbold text-large text-gold'>RECEIVE</Text>
+                            <Feather size={52} name="arrow-down-left" color="#ffffff" />
                         </LinearGradient>
                     </TouchableOpacity>
                 </View>
-            </View>
+            </Container>
         </SafeAreaView>
     )
 }
