@@ -10,9 +10,9 @@ interface Props {
 
 const CustomInput = ({ input, handleInputChange, placeholder, keyBoardType }: Props) => {
     return (
-        <View className="w-full h-16">
+        <View className="w-full h-[50px] items-center justify-center">
             <LinearGradient
-                className="w-full py-4 rounded-xl flex-row items-center justify-between px-4"
+                className="w-full h-full rounded-xl flex-row items-center justify-between pl-7"
                 colors={['rgba(50, 100, 166, 0.2)', 'rgba(242, 242, 242, 0.2)']}
                 start={[0.15, 0]}
                 end={[0.85, 1]}>
