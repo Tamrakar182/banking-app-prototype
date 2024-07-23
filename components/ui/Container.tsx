@@ -1,8 +1,8 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, ViewProps } from 'react-native';
 import clsx from 'clsx';
 
-interface Props {
+interface Props extends ViewProps {
   children: React.ReactNode
   className?: string
 }

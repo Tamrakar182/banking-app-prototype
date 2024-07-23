@@ -6,6 +6,7 @@ module.exports = {
       colors: {
         'backgroundBlue': '#0C4CA3',
         'gold': '#F9A605',
+        "profitGreen": "#31D209",
       },
       fontFamily: {
         display: ["OpenSans-Regular", "sans-serif"],

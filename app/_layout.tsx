@@ -3,6 +3,7 @@ import { useFonts } from "expo-font"
 import { useEffect } from "react"
 import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { AppProvider } from '@/context/AppContext';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -31,19 +32,21 @@ const RootLayout = () => {
   return (
     <GestureHandlerRootView>
       <BottomSheetModalProvider>
-        <Stack
-          screenOptions={{
-            headerShown: false,
-          }}
-        >
-          <Stack.Screen name="index" options={{ animation: 'fade' }} />
-          <Stack.Screen name="(auth)/video" options={{ animation: 'slide_from_right' }} />
-          <Stack.Screen name="(auth)/info" options={{ animation: 'slide_from_bottom' }} />
-          <Stack.Screen name="(auth)/phone" options={{ animation: 'slide_from_right' }} />
-          <Stack.Screen name="(auth)/register" options={{ animation: 'slide_from_right' }} />
-          <Stack.Screen name="(auth)/login" options={{ animation: 'slide_from_right' }} />
-          <Stack.Screen name="(tabs)" options={{ headerShown: false, animation: 'fade' }} />
-        </Stack>
+        <AppProvider>
+          <Stack
+            screenOptions={{
+              headerShown: false,
+            }}
+          >
+            <Stack.Screen name="index" options={{ animation: 'fade' }} />
+            <Stack.Screen name="(auth)/video" options={{ animation: 'slide_from_right' }} />
+            <Stack.Screen name="(auth)/info" options={{ animation: 'slide_from_bottom' }} />
+            <Stack.Screen name="(auth)/phone" options={{ animation: 'slide_from_right' }} />
+            <Stack.Screen name="(auth)/register" options={{ animation: 'slide_from_right' }} />
+            <Stack.Screen name="(auth)/login" options={{ animation: 'slide_from_right' }} />
+            <Stack.Screen name="(tabs)" options={{ headerShown: false, animation: 'fade' }} />
+          </Stack>
+        </AppProvider>
       </BottomSheetModalProvider>
     </GestureHandlerRootView>
   )

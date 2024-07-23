@@ -1,4 +1,4 @@
-import { View, TextInput, TouchableOpacity, KeyboardTypeOptions } from 'react-native'
+import { View, TextInput, Pressable, KeyboardTypeOptions } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient';
 import Icon from '@expo/vector-icons/FontAwesome';
 import { useState } from 'react';
@@ -11,15 +11,16 @@ interface Props {
     handleInputChange: (str: string) => void
     placeholder: string
     containerStyles?: string
+    gradientStyles?: string
     keyboardType?: KeyboardTypeOptions
 }
 
-const IconedInput = ({ icon, containerStyles, input, handleInputChange, keyboardType="default", placeholder }: Props) => {
+const IconedInput = ({ icon, containerStyles, input, handleInputChange, keyboardType = "default", placeholder, gradientStyles }: Props) => {
     const [showPassword, setshowPassword] = useState(false)
     return (
         <View className={clsx("w-full h-16", containerStyles)}>
             <LinearGradient
-                className="w-full py-4 rounded-xl flex-row items-center justify-between px-4"
+                className={clsx("w-full py-4 rounded-xl flex-row items-center justify-between px-4", gradientStyles)}
                 colors={['rgba(50, 100, 166, 0.2)', 'rgba(242, 242, 242, 0.2)']}
                 start={[0.15, 0]}
                 end={[0.85, 1]}>
@@ -40,9 +41,14 @@ const IconedInput = ({ icon, containerStyles, input, handleInputChange, keyboard
                     secureTextEntry={placeholder === "Password" && !showPassword}
                 />
                 {placeholder === "Password" && (
-                    <TouchableOpacity onPress={() => setshowPassword(!showPassword)}>
+                    <Pressable
+                        style={({ pressed }) => [
+                            { opacity: pressed ? 0.5 : 1.0 }
+                        ]}
+                        onPress={() => setshowPassword(!showPassword)}
+                    >
                         <Entypo name={!showPassword ? "eye" : "eye-with-line"} size={24} color="#fff" />
-                    </TouchableOpacity>
+                    </Pressable>
                 )}
             </LinearGradient>
         </View>

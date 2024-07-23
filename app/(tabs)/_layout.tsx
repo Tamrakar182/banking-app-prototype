@@ -1,65 +1,84 @@
-import { View, Text, Image, TouchableOpacity } from 'react-native'
+import { View, Text, Image, Pressable } from 'react-native'
 import React from 'react'
 import { Tabs, Redirect } from 'expo-router'
-import AntDesign from "@expo/vector-icons/AntDesign";
-import Foundation from "@expo/vector-icons/Foundation";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import Entypo from "@expo/vector-icons/Entypo";
 import Feather from "@expo/vector-icons/Feather";
 import { LinearGradient } from 'expo-linear-gradient';
+import images from '@/constants/images';
+import useKeyboardVisible from '@/hooks/useKeyboard';
 
 const CustomTabBar = ({ state, descriptors, navigation }: any) => {
+    const isKeyboardVisible = useKeyboardVisible();
+
     const visibleRoutes = state.routes.filter((route: any) =>
         descriptors[route.key].options.tabBarIcon !== undefined
     );
 
     return (
-        <LinearGradient
-            colors={['#3264a6', '#f2f2f22a']}
-            start={{ x: 0, y: 0 }}
-            end={{ x: 1, y: 0 }}
-            style={{
-                flexDirection: 'row',
-                height: 75,
-                marginHorizontal: 24,
-                borderRadius: 50,
-                marginBottom: 10,
-            }}
-        >
-            {visibleRoutes.map((route: any, index: number) => {
-                const { options } = descriptors[route.key];
-                const isFocused = state.index === state.routes.indexOf(route);
+        <View>
+            <LinearGradient
+                colors={['#3264a6', '#f2f2f22a']}
+                start={{ x: 0, y: 0 }}
+                end={{ x: 1, y: 0 }}
+                style={{
+                    display: isKeyboardVisible ? "none" : "flex",
+                    flexDirection: 'row',
+                    height: 75,
+                    borderRadius: 50,
+                    marginBottom: 20,
+                    shadowColor: '#000',
+                    shadowOffset: { width: -10, height: 10 },
+                    shadowOpacity: 0.5,
+                    shadowRadius: 2,
+                    elevation: 3,
+                    justifyContent: "center",
+                    paddingHorizontal: 4,
+                    alignItems: "center",
+                    position: "absolute",
+                    bottom: 0,
+                    width: '95%',
+                    alignSelf: 'center'
+                }}
+            >
+                {visibleRoutes.map((route: any, index: number) => {
+                    const { options } = descriptors[route.key];
+                    const isFocused = state.index === state.routes.indexOf(route);
 
-                const onPress = () => {
-                    const event = navigation.emit({
-                        type: 'tabPress',
-                        target: route.key,
-                    });
+                    const onPress = () => {
+                        const event = navigation.emit({
+                            type: 'tabPress',
+                            target: route.key,
+                        });
 
-                    if (!isFocused && !event.defaultPrevented) {
-                        navigation.navigate(route.name);
-                    }
-                };
+                        if (!isFocused && !event.defaultPrevented) {
+                            navigation.navigate(route.name);
+                        }
+                    };
 
-                return (
-                    <TouchableOpacity
-                        key={route.key}
-                        onPress={onPress}
-                        style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}
-                    >
-                        {options.tabBarIcon({
-                            color: isFocused ? '#00ff00' : '#ffffff',
-                            focused: isFocused
-                        })}
-                    </TouchableOpacity>
-                );
-            })}
-        </LinearGradient>
+                    return (
+                        <Pressable
+                            key={route.key}
+                            onPress={onPress}
+                            style={({ pressed }) => [
+                                { opacity: pressed ? 0.5 : 1.0, flex: 1, alignItems: 'center', justifyContent: 'center', }
+
+                            ]}
+                        >
+                            {options.tabBarIcon({
+                                color: isFocused ? '#00ff00' : '#ffffff',
+                                focused: isFocused
+                            })}
+                        </Pressable>
+                    );
+                })}
+            </LinearGradient>
+        </View>
     );
 };
 const TabsLayout = () => {
+
     return (
-        <View className='flex-1 bg-backgroundBlue'>
+        <View className='flex-1 bg-transparent'>
             <Tabs
                 tabBar={(props) => <CustomTabBar {...props} />}
                 screenOptions={{
@@ -73,10 +92,13 @@ const TabsLayout = () => {
                         title: "Home",
                         headerShown: false,
                         tabBarIcon: ({ color, focused }) => (
-                            <AntDesign
-                                name="home"
-                                size={30}
-                                color={color}
+                            <Image
+                                source={images.HomeIcon}
+                                className='w-[30px] h-[30px]'
+                                resizeMode='contain'
+                                style={{
+                                    tintColor: color
+                                }}
                             />
                         )
                     }}
@@ -87,10 +109,14 @@ const TabsLayout = () => {
                         title: "Payments",
                         headerShown: false,
                         tabBarIcon: ({ color, focused }) => (
-                            <Foundation
-                                name="dollar-bill"
-                                size={30}
-                                color={color}
+                            <Image
+                                source={images.CashIcon}
+                                className='w-[30px] h-[30px]'
+                                resizeMode='contain'
+                                style={{
+                                    tintColor: color,
+                                    marginRight: 10
+                                }}
                             />
                         )
                     }}
@@ -101,7 +127,7 @@ const TabsLayout = () => {
                         title: "QR Scanner",
                         headerShown: false,
                         tabBarIcon: ({ color, focused }) => (
-                            <View>
+                            <View className='self-center'>
                                 <LinearGradient
                                     colors={['#0C4CA3', '#011B3E']}
                                     start={[0, 0.25]}
@@ -111,7 +137,7 @@ const TabsLayout = () => {
 
                                     <Ionicons
                                         name="scan"
-                                        size={50}
+                                        size={60}
                                         color={color}
                                     />
                                 </LinearGradient>
@@ -125,9 +151,10 @@ const TabsLayout = () => {
                         title: "Chat",
                         headerShown: false,
                         tabBarIcon: ({ color, focused }) => (
-                            <Entypo
-                                name="chat"
+                            <Ionicons
+                                name="chatbox"
                                 size={30}
+                                style={{ marginLeft: 10 }}
                                 color={color}
                             />
                         )
@@ -151,6 +178,7 @@ const TabsLayout = () => {
                     name="myqr"
                     options={{
                         href: null,
+                        tabBarHideOnKeyboard: true,
                     }}
                 />
             </Tabs>
